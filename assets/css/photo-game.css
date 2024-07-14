@@ -119,20 +119,26 @@ form input, form select {
     margin-bottom: 10px;
 }
 
-.player-topic-container h3 {
-    margin: 0;
-    font-size: 18px;
-    color: #0073aa;
-}
-
 .topic {
-    min-height: 50px; /* Ensure consistent height */
-    font-size: 20px; /* Make topic text larger */
+    min-height: 50px;
+    font-size: 32px;
+    line-height: 1em;
 }
 
-button#start-turn, button#success-turn, button#fail-turn {
+button#start-turn {
+    width: 100%;
+    background: #000;
+    color: #fff;
+}
+
+button#start-turn:hover {
+    background: #333;
+}
+
+button#success-turn, button#fail-turn {
     width: 48%;
     margin: 10px 1%;
+    color: #fff;
 }
 
 button#success-turn {
@@ -143,20 +149,12 @@ button#fail-turn {
     background: #dc3545;
 }
 
-button#start-turn {
-    background: #0073aa;
-}
-
 button#success-turn:hover {
     background: #218838;
 }
 
 button#fail-turn:hover {
     background: #c82333;
-}
-
-button#start-turn:hover {
-    background: #005f8a;
 }
 
 .game-over p {

@@ -3,12 +3,15 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-use Elementor\Widget_Base;
-use Elementor\Controls_Manager;
+use \Elementor\Widget_Base;
+use \Elementor\Controls_Manager;
 
 // Register the widget
 function photo_game_register_elementor_widget() {
-    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor\Photo_Game_Widget());
+    // Ensure Elementor is loaded before registering the widget
+    if (did_action('elementor/loaded')) {
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Photo_Game_Widget());
+    }
 }
 add_action('elementor/widgets/widgets_registered', 'photo_game_register_elementor_widget');
 

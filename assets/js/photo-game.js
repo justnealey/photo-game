@@ -180,7 +180,7 @@ jQuery(document).ready(function($) {
         }
     });
 
-    $('#reset-game-link').click(function() {
+    $('#reset-game-link, #reset-game').click(function() {
         localStorage.removeItem('photoGameState');
         location.reload();
     });

@@ -67,6 +67,21 @@ form input, form select {
     font-weight: bold;
 }
 
+.progress-container {
+    width: 100%;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    height: 20px;
+    background: #28a745;
+    width: 100%;
+    transition: width 1s linear;
+}
+
 .game-screen {
     text-align: center;
     background: #f0f0f0;
@@ -79,7 +94,7 @@ form input, form select {
     margin: 10px 0;
 }
 
-button#pass-turn {
+button#success-turn {
     background: #28a745;
 }
 
@@ -87,7 +102,7 @@ button#fail-turn {
     background: #dc3545;
 }
 
-button#pass-turn:hover {
+button#success-turn:hover {
     background: #218838;
 }
 

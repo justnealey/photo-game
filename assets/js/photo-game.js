@@ -53,21 +53,26 @@ jQuery(document).ready(function($) {
             $('#current-player').text('Player: ' + currentPlayer.name);
             $('#current-topic').text('Topic: ' + getTopic(difficulty));
             $('#timer').text('Time left: ' + timePerTopic + ' minutes');
-            
-            // Start countdown timer
+
+            // Start countdown timer and progress bar
             var timer = timePerTopic * 60;
+            var progressBarWidth = 100;
             var countdown = setInterval(function() {
                 timer--;
                 var minutes = Math.floor(timer / 60);
                 var seconds = timer % 60;
                 $('#timer').text('Time left: ' + minutes + ' minutes ' + (seconds < 10 ? '0' : '') + seconds + ' seconds');
+                
+                progressBarWidth = (timer / (timePerTopic * 60)) * 100;
+                $('#progress-bar').css('width', progressBarWidth + '%');
+
                 if (timer <= 0) {
                     clearInterval(countdown);
                     endTurn(false);
                 }
             }, 1000);
 
-            $('#pass-turn').off().click(function() {
+            $('#success-turn').off().click(function() {
                 clearInterval(countdown);
                 endTurn(true);
             });

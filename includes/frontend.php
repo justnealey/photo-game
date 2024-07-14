@@ -35,7 +35,10 @@ function photo_game_shortcode() {
             <p id="current-player" style="font-size: 24px; font-weight: bold;"></p>
             <p id="current-topic" style="font-size: 20px; font-weight: bold;"></p>
             <p id="timer"></p>
-            <button id="pass-turn" class="button button-primary"><?php _e('Pass Turn', 'photo-game'); ?></button>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <button id="success-turn" class="button button-primary"><?php _e('Success', 'photo-game'); ?></button>
             <button id="fail-turn" class="button button-primary"><?php _e('Fail Turn', 'photo-game'); ?></button>
         </div>
         <div class="player-scores" style="display: none;">

@@ -8,7 +8,7 @@ function photo_game_shortcode() {
     ob_start();
     ?>
     <div id="photo-game">
-        <img src="https://inthestreets.co/wp-content/uploads/2023/07/In-the-1-1.png" class="logo" alt="In The Streets Logo">
+        <a href="https://inthestreets.co"><img src="https://inthestreets.co/wp-content/uploads/2023/07/In-the-1-1.png" class="logo" alt="In The Streets Logo"></a>
         <div class="game-intro">
             <h2><?php _e('Welcome to PHOTO Game!', 'photo-game'); ?></h2>
             <p><?php _e('Get ready to explore the streets and capture amazing photos!', 'photo-game'); ?></p>

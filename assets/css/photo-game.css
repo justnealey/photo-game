@@ -16,17 +16,26 @@ html, body {
     padding: 20px;
     background: #f9f9f9;
     box-sizing: border-box;
+    position: relative;
 }
 
 #photo-game img.logo {
-    max-width: 200px;
-    margin-bottom: 20px;
+    max-width: 150px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#photo-game img.logo a {
+    display: block;
 }
 
 .game-intro, .game-setup, .game-screen, .game-over, .player-scores {
     width: 100%;
     max-width: 600px;
     margin: 20px 0;
+    margin-top: 80px; /* Ensure content is not hidden behind the logo */
 }
 
 button.button {
@@ -80,6 +89,11 @@ form input, form select {
     overflow: hidden;
     margin-top: 10px;
     cursor: pointer;
+}
+
+#turn-buttons {
+    display: flex;
+    flex-direction: row;
 }
 
 .progress-bar {

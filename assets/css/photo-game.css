@@ -1,6 +1,7 @@
+/* Mobile-first styles */
 #photo-game {
     text-align: center;
-    max-width: 600px;
+    max-width: 90%;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ddd;
@@ -21,6 +22,8 @@ button.button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
+    max-width: 300px;
 }
 
 button.button:hover {
@@ -39,7 +42,7 @@ form input, form select {
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #fff !important; /* Add background color */
+    background-color: #fff; /* Add background color */
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); /* Add inner shadow for 3D effect */
 }
 
@@ -65,4 +68,27 @@ form input, form select {
 .player-scores li {
     font-size: 18px;
     margin-top: 10px;
+}
+
+/* Media queries for larger screens */
+@media (min-width: 600px) {
+    #photo-game {
+        max-width: 600px;
+    }
+}
+
+@media (min-width: 768px) {
+    #photo-game {
+        max-width: 700px;
+    }
+
+    button.button {
+        width: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    #photo-game {
+        max-width: 800px;
+    }
 }

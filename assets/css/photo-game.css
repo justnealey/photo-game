@@ -61,10 +61,11 @@ form input, form select {
     margin-top: 10px;
 }
 
-#timer {
-    font-size: 32px;
+.timer-container {
     margin-top: 10px;
+    font-size: 24px;
     font-weight: bold;
+    color: #333;
 }
 
 .progress-container {
@@ -90,8 +91,18 @@ form input, form select {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.game-screen p {
-    margin: 10px 0;
+.player-topic-container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.player-topic-container h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #0073aa;
 }
 
 button#success-turn {

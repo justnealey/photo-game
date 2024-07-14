@@ -31,12 +31,15 @@ function photo_game_shortcode() {
             </form>
         </div>
         <div class="game-screen" style="display: none;">
-            <h2><?php _e('Current Turn', 'photo-game'); ?></h2>
-            <p id="current-player" style="font-size: 24px; font-weight: bold;"></p>
-            <p id="current-topic" style="font-size: 20px; font-weight: bold;"></p>
-            <p id="timer"></p>
-            <div class="progress-container">
-                <div class="progress-bar" id="progress-bar"></div>
+            <div class="player-topic-container">
+                <h3><?php _e('Player:', 'photo-game'); ?> <span id="current-player"></span></h3>
+                <h3><?php _e('Topic:', 'photo-game'); ?> <span id="current-topic"></span></h3>
+            </div>
+            <div class="timer-container">
+                <p id="timer"></p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
             </div>
             <button id="success-turn" class="button button-primary"><?php _e('Success', 'photo-game'); ?></button>
             <button id="fail-turn" class="button button-primary"><?php _e('Fail Turn', 'photo-game'); ?></button>

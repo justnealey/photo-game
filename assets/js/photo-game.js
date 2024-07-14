@@ -50,8 +50,8 @@ jQuery(document).ready(function($) {
                 currentPlayerIndex = 0;
             }
             var currentPlayer = players[currentPlayerIndex];
-            $('#current-player').text('Player: ' + currentPlayer.name);
-            $('#current-topic').text('Topic: ' + getTopic(difficulty));
+            $('#current-player').text(currentPlayer.name);
+            $('#current-topic').text(getTopic(difficulty));
             $('#timer').text('Time left: ' + timePerTopic + ' minutes');
 
             // Start countdown timer and progress bar

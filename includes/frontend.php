@@ -18,10 +18,21 @@ function photo_game_shortcode() {
             <h2><?php _e('Game Setup', 'photo-game'); ?></h2>
             <form id="game-setup-form">
                 <label for="num-players"><?php _e('Number of Players:', 'photo-game'); ?></label>
-                <input type="number" id="num-players" name="num-players" min="1" max="10" value="2" required>
+                <select id="num-players" name="num-players" required>
+                    <?php for ($i = 1; $i <= 10; $i++) : ?>
+                        <option value="<?php echo $i; ?>"><?php echo $i; ?> <?php _e('Player', 'photo-game'); ?></option>
+                    <?php endfor; ?>
+                </select>
                 <div id="player-names"></div>
-                <label for="time-per-topic"><?php _e('Time per Topic (minutes):', 'photo-game'); ?></label>
-                <input type="number" id="time-per-topic" name="time-per-topic" min="1" max="10" value="2" required>
+                <label for="time-per-topic"><?php _e('Time per Topic:', 'photo-game'); ?></label>
+                <select id="time-per-topic" name="time-per-topic" required>
+                    <option value="1"><?php _e('1 minute', 'photo-game'); ?></option>
+                    <option value="2"><?php _e('2 minutes', 'photo-game'); ?></option>
+                    <option value="3"><?php _e('3 minutes', 'photo-game'); ?></option>
+                    <option value="5"><?php _e('5 minutes', 'photo-game'); ?></option>
+                    <option value="10"><?php _e('10 minutes', 'photo-game'); ?></option>
+                    <option value="30"><?php _e('30 minutes', 'photo-game'); ?></option>
+                </select>
                 <label for="difficulty"><?php _e('Difficulty:', 'photo-game'); ?></label>
                 <select id="difficulty" name="difficulty" required>
                     <option value="easy"><?php _e('Easy', 'photo-game'); ?></option>

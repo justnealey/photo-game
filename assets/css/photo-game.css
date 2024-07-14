@@ -139,6 +139,10 @@ form input, form select {
     line-height: 1em;
 }
 
+#difficulty {
+    margin-bottom: 24px;
+}
+
 button#start-turn {
     width: 100%;
     background: #000;

@@ -31,3 +31,12 @@ function photo_game_register_shortcode() {
     add_shortcode('photo_game', 'photo_game_shortcode');
 }
 add_action('init', 'photo_game_register_shortcode');
+
+// Load Elementor widget
+function photo_game_load_elementor_widget() {
+    // Check if Elementor is installed and activated
+    if (did_action('elementor/loaded')) {
+        include_once PHOTO_GAME_PLUGIN_DIR . 'includes/elementor-widget.php';
+    }
+}
+add_action('plugins_loaded', 'photo_game_load_elementor_widget');

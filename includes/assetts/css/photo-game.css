@@ -1,0 +1,11 @@
+#photo-game {
+    text-align: center;
+}
+
+.game-intro, .game-setup, .game-screen, .game-over {
+    margin-top: 20px;
+}
+
+button.button {
+    margin-top: 10px;
+}

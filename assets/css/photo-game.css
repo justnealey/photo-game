@@ -78,7 +78,7 @@ form input, form select {
 
 .progress-bar {
     height: 20px;
-    background: #28a745;
+    background: #ffc107; /* Changed to yellow to avoid confusion with success button */
     width: 100%;
     transition: width 1s linear;
 }
@@ -92,6 +92,9 @@ form input, form select {
 }
 
 .player-topic-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -99,10 +102,28 @@ form input, form select {
     margin-bottom: 20px;
 }
 
+.player-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
 .player-topic-container h3 {
     margin: 0;
     font-size: 18px;
     color: #0073aa;
+}
+
+button#success-turn, button#fail-turn {
+    width: 48%;
+    margin: 10px 1%;
 }
 
 button#success-turn {

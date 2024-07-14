@@ -32,17 +32,21 @@ function photo_game_shortcode() {
         </div>
         <div class="game-screen" style="display: none;">
             <div class="player-topic-container">
+                <div id="player-icon" class="player-icon"></div>
                 <h3><?php _e('Player:', 'photo-game'); ?> <span id="current-player"></span></h3>
                 <h3><?php _e('Topic:', 'photo-game'); ?> <span id="current-topic"></span></h3>
             </div>
             <div class="timer-container">
+                <div><?php _e('Time left:', 'photo-game'); ?></div>
                 <p id="timer"></p>
                 <div class="progress-container">
                     <div class="progress-bar" id="progress-bar"></div>
                 </div>
             </div>
-            <button id="success-turn" class="button button-primary"><?php _e('Success', 'photo-game'); ?></button>
-            <button id="fail-turn" class="button button-primary"><?php _e('Fail Turn', 'photo-game'); ?></button>
+            <div style="display: flex; justify-content: space-between;">
+                <button id="success-turn" class="button button-primary"><?php _e('Success', 'photo-game'); ?></button>
+                <button id="fail-turn" class="button button-primary"><?php _e('Fail Turn', 'photo-game'); ?></button>
+            </div>
         </div>
         <div class="player-scores" style="display: none;">
             <h2><?php _e('Current Scores', 'photo-game'); ?></h2>

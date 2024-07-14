@@ -52,7 +52,13 @@ jQuery(document).ready(function($) {
             var currentPlayer = players[currentPlayerIndex];
             $('#current-player').text(currentPlayer.name);
             $('#current-topic').text(getTopic(difficulty));
-            $('#timer').text('Time left: ' + timePerTopic + ' minutes');
+
+            var playerInitial = currentPlayer.name.charAt(0).toUpperCase();
+            $('#player-icon').text(playerInitial);
+            $('#player-icon').css('background-color', stringToColor(currentPlayer.name));
+
+            $('#timer').text(timePerTopic + ' minutes');
+            $('#progress-bar').css('width', '100%');
 
             // Start countdown timer and progress bar
             var timer = timePerTopic * 60;
@@ -61,7 +67,7 @@ jQuery(document).ready(function($) {
                 timer--;
                 var minutes = Math.floor(timer / 60);
                 var seconds = timer % 60;
-                $('#timer').text('Time left: ' + minutes + ' minutes ' + (seconds < 10 ? '0' : '') + seconds + ' seconds');
+                $('#timer').text(minutes + ' minutes ' + (seconds < 10 ? '0' : '') + seconds + ' seconds');
                 
                 progressBarWidth = (timer / (timePerTopic * 60)) * 100;
                 $('#progress-bar').css('width', progressBarWidth + '%');
@@ -113,6 +119,20 @@ jQuery(document).ready(function($) {
         }
 
         nextTurn();
+    }
+
+    // Generate a color based on the player's name
+    function stringToColor(str) {
+        var hash = 0;
+        for (var i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        var color = '#';
+        for (var i = 0; i < 3; i++) {
+            var value = (hash >> (i * 8)) & 0xFF;
+            color += ('00' + value.toString(16)).substr(-2);
+        }
+        return color;
     }
 
     // Reset game

@@ -8,6 +8,7 @@ function photo_game_shortcode() {
     ob_start();
     ?>
     <div id="photo-game">
+        <img src="https://inthestreets.co/wp-content/uploads/2023/07/In-the-1-1.png" class="logo" alt="In The Streets Logo">
         <div class="game-intro">
             <h2><?php _e('Welcome to PHOTO Game!', 'photo-game'); ?></h2>
             <p><?php _e('Get ready to explore the streets and capture amazing photos!', 'photo-game'); ?></p>
@@ -33,7 +34,6 @@ function photo_game_shortcode() {
         <div class="game-screen" style="display: none;">
             <div class="player-topic-container">
                 <div id="player-tag" class="player-tag"></div>
-                <h3><?php _e('Topic:', 'photo-game'); ?></h3>
                 <div class="topic"><span id="current-topic"></span></div>
             </div>
             <div class="timer-container">
@@ -43,7 +43,8 @@ function photo_game_shortcode() {
                     <div class="progress-bar" id="progress-bar"></div>
                 </div>
             </div>
-            <div style="display: flex; justify-content: space-between;">
+            <button id="start-turn" class="button button-primary" style="display: block;"><?php _e('Start Turn', 'photo-game'); ?></button>
+            <div id="turn-buttons" style="display: none;">
                 <button id="success-turn" class="button button-primary"><?php _e('Success', 'photo-game'); ?></button>
                 <button id="fail-turn" class="button button-primary"><?php _e('Fail Turn', 'photo-game'); ?></button>
             </div>

@@ -18,6 +18,11 @@ html, body {
     box-sizing: border-box;
 }
 
+#photo-game img.logo {
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+
 .game-intro, .game-setup, .game-screen, .game-over, .player-scores {
     width: 100%;
     max-width: 600px;
@@ -33,7 +38,6 @@ button.button {
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
-    max-width: 300px;
 }
 
 button.button:hover {
@@ -66,6 +70,7 @@ form input, form select {
     font-size: 24px;
     font-weight: bold;
     color: #333;
+    cursor: pointer;
 }
 
 .progress-container {
@@ -74,6 +79,7 @@ form input, form select {
     border-radius: 10px;
     overflow: hidden;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .progress-bar {
@@ -100,6 +106,7 @@ form input, form select {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     padding: 20px;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .player-tag {
@@ -120,9 +127,10 @@ form input, form select {
 
 .topic {
     min-height: 50px; /* Ensure consistent height */
+    font-size: 20px; /* Make topic text larger */
 }
 
-button#success-turn, button#fail-turn {
+button#start-turn, button#success-turn, button#fail-turn {
     width: 48%;
     margin: 10px 1%;
 }
@@ -135,12 +143,20 @@ button#fail-turn {
     background: #dc3545;
 }
 
+button#start-turn {
+    background: #0073aa;
+}
+
 button#success-turn:hover {
     background: #218838;
 }
 
 button#fail-turn:hover {
     background: #c82333;
+}
+
+button#start-turn:hover {
+    background: #005f8a;
 }
 
 .game-over p {

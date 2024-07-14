@@ -40,6 +40,9 @@ jQuery(document).ready(function($) {
         startGame(players, timePerTopic, difficulty);
     });
 
+    var countdown;
+    var paused = false;
+
     function startGame(players, timePerTopic, difficulty) {
         var currentPlayerIndex = 0;
 
@@ -56,22 +59,31 @@ jQuery(document).ready(function($) {
 
             $('#timer').text(timePerTopic + ' minutes');
             $('#progress-bar').css('width', '100%');
+            $('#start-turn').show();
+            $('#turn-buttons').hide();
+        }
+
+        function startTurn() {
+            $('#start-turn').hide();
+            $('#turn-buttons').show();
 
             // Start countdown timer and progress bar
             var timer = timePerTopic * 60;
             var progressBarWidth = 100;
-            var countdown = setInterval(function() {
-                timer--;
-                var minutes = Math.floor(timer / 60);
-                var seconds = timer % 60;
-                $('#timer').text(minutes + ' minutes ' + (seconds < 10 ? '0' : '') + seconds + ' seconds');
-                
-                progressBarWidth = (timer / (timePerTopic * 60)) * 100;
-                $('#progress-bar').css('width', progressBarWidth + '%');
+            countdown = setInterval(function() {
+                if (!paused) {
+                    timer--;
+                    var minutes = Math.floor(timer / 60);
+                    var seconds = timer % 60;
+                    $('#timer').text(minutes + ' minutes ' + (seconds < 10 ? '0' : '') + seconds + ' seconds');
+                    
+                    progressBarWidth = (timer / (timePerTopic * 60)) * 100;
+                    $('#progress-bar').css('width', progressBarWidth + '%');
 
-                if (timer <= 0) {
-                    clearInterval(countdown);
-                    endTurn(false);
+                    if (timer <= 0) {
+                        clearInterval(countdown);
+                        endTurn(false);
+                    }
                 }
             }, 1000);
 
@@ -114,6 +126,17 @@ jQuery(document).ready(function($) {
                 $('#player-scores-list').append('<li>' + players[i].name + ': ' + players[i].letters + '</li>');
             }
         }
+
+        $('#start-turn').click(startTurn);
+
+        $('.timer-container, .progress-container, .player-topic-container').click(function() {
+            paused = !paused;
+            if (paused) {
+                clearInterval(countdown);
+            } else {
+                startTurn();
+            }
+        });
 
         nextTurn();
     }

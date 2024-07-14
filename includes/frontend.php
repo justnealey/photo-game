@@ -10,7 +10,7 @@ function photo_game_shortcode() {
     <div id="photo-game">
         <a href="https://inthestreets.co"><img src="https://inthestreets.co/wp-content/uploads/2023/07/In-the-1-1.png" class="logo" alt="In The Streets Logo"></a>
         <div class="game-intro">
-            <img scr="https://inthestreets.co/wp-content/uploads/2024/07/photo.png" style="
+            <img src="https://inthestreets.co/wp-content/uploads/2024/07/photo.png" style="
             width: 100%;
             height: 240px;
             object-fit: cover;

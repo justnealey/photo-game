@@ -168,6 +168,12 @@ button#fail-turn:hover {
     background: #c82333;
 }
 
+#turn-buttons {
+    display: flex;
+    justify-content: space-between;
+
+}
+
 .game-over p {
     font-size: 18px;
     margin-top: 10px;

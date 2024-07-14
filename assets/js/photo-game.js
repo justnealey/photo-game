@@ -3,16 +3,21 @@ jQuery(document).ready(function($) {
     $('#start-game').click(function() {
         $('.game-intro').hide();
         $('.game-setup').show();
+        generatePlayerNameInputs(2); // Generate default 2 player inputs on initial load
     });
 
     // Generate player name inputs dynamically based on number of players
     $('#num-players').on('change', function() {
         var numPlayers = $(this).val();
+        generatePlayerNameInputs(numPlayers);
+    });
+
+    function generatePlayerNameInputs(numPlayers) {
         $('#player-names').empty();
         for (var i = 1; i <= numPlayers; i++) {
             $('#player-names').append('<label for="player-' + i + '-name">Player ' + i + ' Name:</label><input type="text" id="player-' + i + '-name" name="player-' + i + '-name" required><br>');
         }
-    });
+    }
 
     // Handle game setup form submission
     $('#game-setup-form').submit(function(event) {

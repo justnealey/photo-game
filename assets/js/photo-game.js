@@ -77,18 +77,7 @@ jQuery(document).ready(function($) {
         }
         
         function getTopic(difficulty) {
-            var topics;
-            switch (difficulty) {
-                case 'easy':
-                    topics = <?php echo json_encode(explode("\n", get_option('photo_game_easy_topics', ''))); ?>;
-                    break;
-                case 'medium':
-                    topics = <?php echo json_encode(explode("\n", get_option('photo_game_medium_topics', ''))); ?>;
-                    break;
-                case 'hard':
-                    topics = <?php echo json_encode(explode("\n", get_option('photo_game_hard_topics', ''))); ?>;
-                    break;
-            }
+            var topics = photoGameData.topics[difficulty];
             return topics[Math.floor(Math.random() * topics.length)];
         }
         

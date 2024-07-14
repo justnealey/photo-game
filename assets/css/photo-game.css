@@ -62,13 +62,51 @@ form input, form select {
 }
 
 #timer {
-    font-size: 24px;
+    font-size: 32px;
     margin-top: 10px;
+    font-weight: bold;
+}
+
+.game-screen {
+    text-align: center;
+    background: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.game-screen p {
+    margin: 10px 0;
+}
+
+button#pass-turn {
+    background: #28a745;
+}
+
+button#fail-turn {
+    background: #dc3545;
+}
+
+button#pass-turn:hover {
+    background: #218838;
+}
+
+button#fail-turn:hover {
+    background: #c82333;
 }
 
 .game-over p {
     font-size: 18px;
     margin-top: 10px;
+}
+
+.player-scores {
+    text-align: center;
+    background: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-top: 30px;
 }
 
 .player-scores ul {
@@ -80,6 +118,10 @@ form input, form select {
 .player-scores li {
     font-size: 18px;
     margin-top: 10px;
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
 /* Media queries for larger screens */

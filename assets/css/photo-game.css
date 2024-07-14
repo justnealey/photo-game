@@ -1,22 +1,32 @@
 /* Mobile-first styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
 #photo-game {
-    text-align: center;
-    max-width: 90%;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     background: #f9f9f9;
+    box-sizing: border-box;
 }
 
 .game-intro, .game-setup, .game-screen, .game-over, .player-scores {
-    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px 0;
 }
 
 button.button {
     margin-top: 10px;
-    padding: 10px 20px;
+    padding: 15px;
     background: #0073aa;
     color: #fff;
     border: none;
@@ -34,6 +44,7 @@ form label {
     display: block;
     margin-top: 10px;
     text-align: left;
+    width: 100%;
 }
 
 form input, form select {
@@ -42,7 +53,7 @@ form input, form select {
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #fff; /* Add background color */
+    background-color: #fff !important; /* Add background color */
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); /* Add inner shadow for 3D effect */
 }
 
@@ -63,6 +74,7 @@ form input, form select {
 .player-scores ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 .player-scores li {
@@ -74,6 +86,7 @@ form input, form select {
 @media (min-width: 600px) {
     #photo-game {
         max-width: 600px;
+        margin: 0 auto;
     }
 }
 

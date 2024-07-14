@@ -3,12 +3,6 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-// Enqueue scripts and styles
-function photo_game_enqueue_scripts() {
-    wp_enqueue_style('photo-game-style', PHOTO_GAME_PLUGIN_URL . 'assets/css/photo-game.css');
-    wp_enqueue_script('photo-game-script', PHOTO_GAME_PLUGIN_URL . 'assets/js/photo-game.js', array('jquery'), null, true);
-}
-add_action('wp_enqueue_scripts', 'photo_game_enqueue_scripts');
 
 // Shortcode to display the game
 function photo_game_shortcode() {

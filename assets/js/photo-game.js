@@ -5,6 +5,15 @@ jQuery(document).ready(function($) {
         $('.game-setup').show();
     });
 
+    // Generate player name inputs dynamically based on number of players
+    $('#num-players').on('change', function() {
+        var numPlayers = $(this).val();
+        $('#player-names').empty();
+        for (var i = 1; i <= numPlayers; i++) {
+            $('#player-names').append('<label for="player-' + i + '-name">Player ' + i + ' Name:</label><input type="text" id="player-' + i + '-name" name="player-' + i + '-name" required><br>');
+        }
+    });
+
     // Handle game setup form submission
     $('#game-setup-form').submit(function(event) {
         event.preventDefault();
@@ -12,20 +21,6 @@ jQuery(document).ready(function($) {
         var timePerTopic = $('#time-per-topic').val();
         var difficulty = $('#difficulty').val();
         
-        // Generate player names input fields
-        $('#player-names').empty();
-        for (var i = 1; i <= numPlayers; i++) {
-            $('#player-names').append('<label for="player-' + i + '-name">' + 'Player ' + i + ' Name:</label><input type="text" id="player-' + i + '-name" name="player-' + i + '-name" required><br>');
-        }
-
-        $('.game-setup').hide();
-        $('.game-screen').show();
-        $('.player-scores').show();
-        startGame(numPlayers, timePerTopic, difficulty);
-    });
-
-    function startGame(numPlayers, timePerTopic, difficulty) {
-        var currentPlayerIndex = 0;
         var players = [];
         for (var i = 1; i <= numPlayers; i++) {
             players.push({
@@ -34,8 +29,17 @@ jQuery(document).ready(function($) {
             });
         }
 
+        $('.game-setup').hide();
+        $('.game-screen').show();
+        $('.player-scores').show();
+        startGame(players, timePerTopic, difficulty);
+    });
+
+    function startGame(players, timePerTopic, difficulty) {
+        var currentPlayerIndex = 0;
+
         updateScores();
-        
+
         function nextTurn() {
             if (currentPlayerIndex >= players.length) {
                 currentPlayerIndex = 0;
@@ -72,7 +76,8 @@ jQuery(document).ready(function($) {
         function endTurn(success) {
             var currentPlayer = players[currentPlayerIndex];
             if (!success) {
-                currentPlayer.letters += 'P'.charAt(currentPlayer.letters.length);
+                var letters = 'PHOTO';
+                currentPlayer.letters += letters[currentPlayer.letters.length];
                 if (currentPlayer.letters.length >= 5) {
                     $('.game-screen').hide();
                     $('.game-over').show();
@@ -84,7 +89,7 @@ jQuery(document).ready(function($) {
             currentPlayerIndex++;
             nextTurn();
         }
-        
+
         function getTopic(difficulty) {
             var topics = photoGameData.topics[difficulty];
             return topics[Math.floor(Math.random() * topics.length)];
@@ -96,7 +101,7 @@ jQuery(document).ready(function($) {
                 $('#player-scores-list').append('<li>' + players[i].name + ': ' + players[i].letters + '</li>');
             }
         }
-        
+
         nextTurn();
     }
 

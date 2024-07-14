@@ -17,16 +17,20 @@ jQuery(document).ready(function($) {
         for (var i = 1; i <= numPlayers; i++) {
             $('#player-names').append('<label for="player-' + i + '">' + 'Player ' + i + ' Name:' + '</label><input type="text" id="player-' + i + '" name="player-' + i + '" required><br>');
         }
-        
+
+        // Prevent form resubmission
+        $('.game-setup form').off('submit').on('submit', function(event) {
+            event.preventDefault();
+            startGame(numPlayers, timePerTopic, difficulty);
+            $('.game-setup').hide();
+            $('.game-screen').show();
+        });
+
         $('.game-setup').hide();
-        $('.game-screen').show();
-        
-        // Start the game logic here
-        startGame(numPlayers, timePerTopic, difficulty);
+        $('.game-setup form').show();
     });
 
     function startGame(numPlayers, timePerTopic, difficulty) {
-        // Implement game logic here
         var currentPlayerIndex = 0;
         var players = [];
         for (var i = 1; i <= numPlayers; i++) {
@@ -51,7 +55,7 @@ jQuery(document).ready(function($) {
                 timer--;
                 var minutes = Math.floor(timer / 60);
                 var seconds = timer % 60;
-                $('#timer').text('Time left: ' + minutes + ' minutes ' + seconds + ' seconds');
+                $('#timer').text('Time left: ' + minutes + ' minutes ' + (seconds < 10 ? '0' : '') + seconds + ' seconds');
                 if (timer <= 0) {
                     clearInterval(countdown);
                     endTurn(false);
@@ -67,7 +71,7 @@ jQuery(document).ready(function($) {
         function endTurn(success) {
             var currentPlayer = players[currentPlayerIndex];
             if (!success) {
-                currentPlayer.letters += 'P';
+                currentPlayer.letters += 'P'.charAt(currentPlayer.letters.length);
                 if (currentPlayer.letters.length >= 5) {
                     $('.game-screen').hide();
                     $('.game-over').show();

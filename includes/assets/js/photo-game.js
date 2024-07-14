@@ -18,16 +18,9 @@ jQuery(document).ready(function($) {
             $('#player-names').append('<label for="player-' + i + '">' + 'Player ' + i + ' Name:' + '</label><input type="text" id="player-' + i + '" name="player-' + i + '" required><br>');
         }
 
-        // Prevent form resubmission
-        $('.game-setup form').off('submit').on('submit', function(event) {
-            event.preventDefault();
-            startGame(numPlayers, timePerTopic, difficulty);
-            $('.game-setup').hide();
-            $('.game-screen').show();
-        });
-
         $('.game-setup').hide();
-        $('.game-setup form').show();
+        $('.game-screen').show();
+        startGame(numPlayers, timePerTopic, difficulty);
     });
 
     function startGame(numPlayers, timePerTopic, difficulty) {

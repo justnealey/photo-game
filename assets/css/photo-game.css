@@ -70,6 +70,8 @@ form input, form select {
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); /* Add inner shadow for 3D effect */
     font-size: 16px; /* Prevent zooming on mobile devices */
     min-height: 43px;
+    height: 43px;
+    line-height: 1.2em; /* Ensure consistent height */
 }
 
 #player-names {

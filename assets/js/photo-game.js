@@ -15,11 +15,12 @@ jQuery(document).ready(function($) {
         // Generate player names input fields
         $('#player-names').empty();
         for (var i = 1; i <= numPlayers; i++) {
-            $('#player-names').append('<label for="player-' + i + '">' + 'Player ' + i + ' Name:' + '</label><input type="text" id="player-' + i + '" name="player-' + i + '" required><br>');
+            $('#player-names').append('<label for="player-' + i + '-name">' + 'Player ' + i + ' Name:</label><input type="text" id="player-' + i + '-name" name="player-' + i + '-name" required><br>');
         }
 
         $('.game-setup').hide();
         $('.game-screen').show();
+        $('.player-scores').show();
         startGame(numPlayers, timePerTopic, difficulty);
     });
 
@@ -28,10 +29,12 @@ jQuery(document).ready(function($) {
         var players = [];
         for (var i = 1; i <= numPlayers; i++) {
             players.push({
-                name: $('#player-' + i).val(),
+                name: $('#player-' + i + '-name').val(),
                 letters: ''
             });
         }
+
+        updateScores();
         
         function nextTurn() {
             if (currentPlayerIndex >= players.length) {
@@ -54,10 +57,15 @@ jQuery(document).ready(function($) {
                     endTurn(false);
                 }
             }, 1000);
-            
-            $('#end-turn').off().click(function() {
+
+            $('#pass-turn').off().click(function() {
                 clearInterval(countdown);
                 endTurn(true);
+            });
+
+            $('#fail-turn').off().click(function() {
+                clearInterval(countdown);
+                endTurn(false);
             });
         }
 
@@ -72,6 +80,7 @@ jQuery(document).ready(function($) {
                     return;
                 }
             }
+            updateScores();
             currentPlayerIndex++;
             nextTurn();
         }
@@ -79,6 +88,13 @@ jQuery(document).ready(function($) {
         function getTopic(difficulty) {
             var topics = photoGameData.topics[difficulty];
             return topics[Math.floor(Math.random() * topics.length)];
+        }
+
+        function updateScores() {
+            $('#player-scores-list').empty();
+            for (var i = 0; i < players.length; i++) {
+                $('#player-scores-list').append('<li>' + players[i].name + ': ' + players[i].letters + '</li>');
+            }
         }
         
         nextTurn();

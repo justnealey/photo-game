@@ -3,7 +3,6 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-
 // Shortcode to display the game
 function photo_game_shortcode() {
     ob_start();
@@ -36,13 +35,18 @@ function photo_game_shortcode() {
             <p id="current-player"></p>
             <p id="current-topic"></p>
             <p id="timer"></p>
-            <button id="end-turn" class="button button-primary"><?php _e('End Turn', 'photo-game'); ?></button>
+            <button id="pass-turn" class="button button-primary"><?php _e('Pass Turn', 'photo-game'); ?></button>
+            <button id="fail-turn" class="button button-primary"><?php _e('Fail Turn', 'photo-game'); ?></button>
         </div>
         <div class="game-over" style="display: none;">
             <h2><?php _e('Game Over', 'photo-game'); ?></h2>
             <p id="game-over-message"></p>
             <p><?php _e('Share your photos on Instagram tagging @inthestreetsco and using the hashtag #inthestreets', 'photo-game'); ?></p>
             <button id="reset-game" class="button button-primary"><?php _e('Play Again', 'photo-game'); ?></button>
+        </div>
+        <div class="player-scores" style="display: none;">
+            <h2><?php _e('Current Scores', 'photo-game'); ?></h2>
+            <ul id="player-scores-list"></ul>
         </div>
     </div>
     <?php

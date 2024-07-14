@@ -9,7 +9,7 @@
     background: #f9f9f9;
 }
 
-.game-intro, .game-setup, .game-screen, .game-over {
+.game-intro, .game-setup, .game-screen, .game-over, .player-scores {
     margin-top: 20px;
 }
 
@@ -51,6 +51,16 @@ form input, form select {
 }
 
 .game-over p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.player-scores ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.player-scores li {
     font-size: 18px;
     margin-top: 10px;
 }

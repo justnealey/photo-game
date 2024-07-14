@@ -25,3 +25,9 @@ function photo_game_init() {
     load_plugin_textdomain('photo-game', false, basename(dirname(__FILE__)) . '/languages');
 }
 add_action('plugins_loaded', 'photo_game_init');
+
+// Register shortcode
+function photo_game_register_shortcode() {
+    add_shortcode('photo_game', 'photo_game_shortcode');
+}
+add_action('init', 'photo_game_register_shortcode');

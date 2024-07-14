@@ -54,5 +54,3 @@ function photo_game_shortcode() {
     <?php
     return ob_get_clean();
 }
-add_shortcode('photo_game', 'photo_game_shortcode');
-?>

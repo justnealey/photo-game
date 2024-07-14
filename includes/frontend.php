@@ -20,7 +20,7 @@ function photo_game_shortcode() {
                 <label for="num-players"><?php _e('Number of Players:', 'photo-game'); ?></label>
                 <select id="num-players" name="num-players" required>
                     <?php for ($i = 1; $i <= 10; $i++) : ?>
-                        <option value="<?php echo $i; ?>"><?php echo $i; ?> <?php _e('Player', 'photo-game'); ?></option>
+                        <option value="<?php echo $i; ?>" <?php if ($i == 1) echo 'selected'; ?>><?php echo $i; ?> <?php _e('Player', 'photo-game'); ?></option>
                     <?php endfor; ?>
                 </select>
                 <div id="player-names"></div>

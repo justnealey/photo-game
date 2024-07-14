@@ -20,7 +20,7 @@ jQuery(document).ready(function($) {
     $('#start-game').click(function() {
         $('.game-intro').hide();
         $('.game-setup').show();
-        generatePlayerNameInputs(players.length || 2); // Generate default 2 player inputs on initial load
+        generatePlayerNameInputs(players.length || 1); // Generate default 1 player input on initial load
     });
 
     // Generate player name inputs dynamically based on number of players

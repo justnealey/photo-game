@@ -50,12 +50,9 @@ jQuery(document).ready(function($) {
                 currentPlayerIndex = 0;
             }
             var currentPlayer = players[currentPlayerIndex];
-            $('#current-player').text(currentPlayer.name);
+            $('#player-tag').text(currentPlayer.name);
+            $('#player-tag').css('background-color', stringToColor(currentPlayer.name));
             $('#current-topic').text(getTopic(difficulty));
-
-            var playerInitial = currentPlayer.name.charAt(0).toUpperCase();
-            $('#player-icon').text(playerInitial);
-            $('#player-icon').css('background-color', stringToColor(currentPlayer.name));
 
             $('#timer').text(timePerTopic + ' minutes');
             $('#progress-bar').css('width', '100%');

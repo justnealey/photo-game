@@ -32,9 +32,9 @@ function photo_game_shortcode() {
         </div>
         <div class="game-screen" style="display: none;">
             <div class="player-topic-container">
-                <div id="player-icon" class="player-icon"></div>
-                <h3><?php _e('Player:', 'photo-game'); ?> <span id="current-player"></span></h3>
-                <h3><?php _e('Topic:', 'photo-game'); ?> <span id="current-topic"></span></h3>
+                <div id="player-tag" class="player-tag"></div>
+                <h3><?php _e('Topic:', 'photo-game'); ?></h3>
+                <div class="topic"><span id="current-topic"></span></div>
             </div>
             <div class="timer-container">
                 <div><?php _e('Time left:', 'photo-game'); ?></div>

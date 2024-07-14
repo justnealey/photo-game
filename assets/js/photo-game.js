@@ -56,6 +56,7 @@ jQuery(document).ready(function($) {
         $('.game-setup').hide();
         $('.game-screen').show();
         $('.player-scores').show();
+        $('#reset-game-link').show();
         startGame();
     });
 
@@ -74,6 +75,7 @@ jQuery(document).ready(function($) {
         $('.game-setup').hide();
         $('.game-screen').show();
         $('.player-scores').show();
+        $('#reset-game-link').show();
         updateScores();
         nextTurn(true); // true indicates restoring a saved state
     }
@@ -178,7 +180,7 @@ jQuery(document).ready(function($) {
         }
     });
 
-    $('#reset-game').click(function() {
+    $('#reset-game-link').click(function() {
         localStorage.removeItem('photoGameState');
         location.reload();
     });

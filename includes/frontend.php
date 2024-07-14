@@ -11,7 +11,7 @@ function photo_game_shortcode() {
         <a href="https://inthestreets.co"><img src="https://inthestreets.co/wp-content/uploads/2023/07/In-the-1-1.png" class="logo" alt="In The Streets Logo"></a>
         <div class="game-intro">
             <h2><?php _e('Welcome to PHOTO Game!', 'photo-game'); ?></h2>
-            <p><?php _e('Play with friends or solo, get topics, take photos, and get creative. This game challenges your creativity and quick thinking as you explore various subjects, techniques, and styles in the world of street photography. ', 'photo-game'); ?></p>
+            <p><?php _e('Play with friends or solo, get topics, take photos, and get creative. This game challenges your creativity and quick thinking as you explore various subjects, techniques, and styles in the world of street photography.', 'photo-game'); ?></p>
             <button id="start-game" class="button button-primary"><?php _e('Start Game', 'photo-game'); ?></button>
         </div>
         <div class="game-setup" style="display: none;">
@@ -70,7 +70,7 @@ function photo_game_shortcode() {
             <p><?php _e('Share your photos on Instagram tagging @inthestreetsco and using the hashtag #inthestreets', 'photo-game'); ?></p>
             <button id="reset-game" class="button button-primary"><?php _e('Play Again', 'photo-game'); ?></button>
         </div>
-        <button id="reset-game" class="button button-primary"><?php _e('Reset Game', 'photo-game'); ?></button>
+        <a id="reset-game-link" href="#"><?php _e('Reset Game', 'photo-game'); ?></a>
     </div>
     <?php
     return ob_get_clean();

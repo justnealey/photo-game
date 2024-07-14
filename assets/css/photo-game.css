@@ -4,6 +4,7 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    -webkit-text-size-adjust: 100%; /* Prevent text size adjustment on iOS */
 }
 
 #photo-game {

@@ -70,6 +70,7 @@ function photo_game_shortcode() {
             <p><?php _e('Share your photos on Instagram tagging @inthestreetsco and using the hashtag #inthestreets', 'photo-game'); ?></p>
             <button id="reset-game" class="button button-primary"><?php _e('Play Again', 'photo-game'); ?></button>
         </div>
+        <button id="reset-game" class="button button-primary"><?php _e('Reset Game', 'photo-game'); ?></button>
     </div>
     <?php
     return ob_get_clean();

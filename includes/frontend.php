@@ -3,14 +3,6 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-function get_topics_from_database($difficulty) {
-    global $wpdb;
-    $table_name = $wpdb->prefix . 'photo_game_topics';
-    $query = $wpdb->prepare("SELECT topic FROM $table_name WHERE difficulty = %s", $difficulty);
-    $results = $wpdb->get_col($query);
-    return $results;
-}
-
 // Shortcode to display the game
 function photo_game_shortcode() {
     ob_start();

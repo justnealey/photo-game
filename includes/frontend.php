@@ -1,5 +1,14 @@
+<?php
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
+}
+
+function get_topics_from_database($difficulty) {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'photo_game_topics';
+    $query = $wpdb->prepare("SELECT topic FROM $table_name WHERE difficulty = %s", $difficulty);
+    $results = $wpdb->get_col($query);
+    return $results;
 }
 
 // Shortcode to display the game
@@ -14,36 +23,36 @@ function photo_game_shortcode() {
             height: 240px;
             object-fit: cover;
         ">
-            <h2><?php _e('Welcome to PHOTO Game!', 'photo-game'); ?></h2>
-            <p><?php _e('Play with friends or solo, get topics, take photos, and get creative. This game challenges your creativity and quick thinking as you explore various subjects, techniques, and styles in the world of street photography.', 'photo-game'); ?></p>
-            <button id="start-game" class="button button-primary"><?php _e('Start Game', 'photo-game'); ?></button>
+            <h2><?php esc_html_e('Welcome to PHOTO Game!', 'photo-game'); ?></h2>
+            <p><?php esc_html_e('Play with friends or solo, get topics, take photos, and get creative. This game challenges your creativity and quick thinking as you explore various subjects, techniques, and styles in the world of street photography.', 'photo-game'); ?></p>
+            <button id="start-game" class="button button-primary"><?php esc_html_e('Start Game', 'photo-game'); ?></button>
         </div>
         <div class="game-setup" style="display: none;">
-            <h2><?php _e('Game Setup', 'photo-game'); ?></h2>
+            <h2><?php esc_html_e('Game Setup', 'photo-game'); ?></h2>
             <form id="game-setup-form">
-                <label for="num-players"><?php _e('Number of Players:', 'photo-game'); ?></label>
+                <label for="num-players"><?php esc_html_e('Number of Players:', 'photo-game'); ?></label>
                 <select id="num-players" name="num-players" required>
                     <?php for ($i = 1; $i <= 10; $i++) : ?>
-                        <option value="<?php echo $i; ?>" <?php if ($i == 1) echo 'selected'; ?>><?php echo $i; ?> <?php _e('Player', 'photo-game'); ?></option>
+                        <option value="<?php echo esc_attr($i); ?>" <?php selected($i, 1); ?>><?php echo esc_html($i); ?> <?php esc_html_e('Player', 'photo-game'); ?></option>
                     <?php endfor; ?>
                 </select>
                 <div id="player-names"></div>
-                <label for="time-per-topic"><?php _e('Time per Topic:', 'photo-game'); ?></label>
+                <label for="time-per-topic"><?php esc_html_e('Time per Topic:', 'photo-game'); ?></label>
                 <select id="time-per-topic" name="time-per-topic" required>
-                    <option value="1"><?php _e('1 minute', 'photo-game'); ?></option>
-                    <option value="2"><?php _e('2 minutes', 'photo-game'); ?></option>
-                    <option value="3"><?php _e('3 minutes', 'photo-game'); ?></option>
-                    <option value="5"><?php _e('5 minutes', 'photo-game'); ?></option>
-                    <option value="10"><?php _e('10 minutes', 'photo-game'); ?></option>
-                    <option value="30"><?php _e('30 minutes', 'photo-game'); ?></option>
+                    <option value="1"><?php esc_html_e('1 minute', 'photo-game'); ?></option>
+                    <option value="2"><?php esc_html_e('2 minutes', 'photo-game'); ?></option>
+                    <option value="3"><?php esc_html_e('3 minutes', 'photo-game'); ?></option>
+                    <option value="5"><?php esc_html_e('5 minutes', 'photo-game'); ?></option>
+                    <option value="10"><?php esc_html_e('10 minutes', 'photo-game'); ?></option>
+                    <option value="30"><?php esc_html_e('30 minutes', 'photo-game'); ?></option>
                 </select>
-                <label for="difficulty"><?php _e('Difficulty:', 'photo-game'); ?></label>
+                <label for="difficulty"><?php esc_html_e('Difficulty:', 'photo-game'); ?></label>
                 <select id="difficulty" name="difficulty" required>
-                    <option value="easy"><?php _e('Easy', 'photo-game'); ?></option>
-                    <option value="medium"><?php _e('Medium', 'photo-game'); ?></option>
-                    <option value="hard"><?php _e('Hard', 'photo-game'); ?></option>
+                    <option value="easy"><?php esc_html_e('Easy', 'photo-game'); ?></option>
+                    <option value="medium"><?php esc_html_e('Medium', 'photo-game'); ?></option>
+                    <option value="hard"><?php esc_html_e('Hard', 'photo-game'); ?></option>
                 </select>
-                <button type="submit" class="button button-primary"><?php _e('Start', 'photo-game'); ?></button>
+                <button type="submit" class="button button-primary"><?php esc_html_e('Start', 'photo-game'); ?></button>
             </form>
         </div>
         <div class="game-screen" style="display: none;">
@@ -52,33 +61,32 @@ function photo_game_shortcode() {
                 <div class="topic"><span id="current-topic"></span></div>
             </div>
             <div class="timer-container">
-                <div><?php _e('Time left:', 'photo-game'); ?></div>
+                <div><?php esc_html_e('Time left:', 'photo-game'); ?></div>
                 <p id="timer"></p>
                 <div class="progress-container">
                     <div class="progress-bar" id="progress-bar"></div>
                 </div>
             </div>
-            <button id="start-turn" class="button button-primary" style="display: block;"><?php _e('Start Turn', 'photo-game'); ?></button>
+            <button id="start-turn" class="button button-primary" style="display: block;"><?php esc_html_e('Start Turn', 'photo-game'); ?></button>
             <div id="turn-buttons" style="display: none;">
-                <button id="success-turn" class="button button-primary"><?php _e('Success', 'photo-game'); ?></button>
-                <button id="fail-turn" class="button button-primary"><?php _e('Fail Turn', 'photo-game'); ?></button>
+                <button id="success-turn" class="button button-primary"><?php esc_html_e('Success', 'photo-game'); ?></button>
+                <button id="fail-turn" class="button button-primary"><?php esc_html_e('Fail Turn', 'photo-game'); ?></button>
             </div>
         </div>
         <div class="player-scores" style="display: none;">
-            <h2><?php _e('Current Scores', 'photo-game'); ?></h2>
+            <h2><?php esc_html_e('Current Scores', 'photo-game'); ?></h2>
             <ul id="player-scores-list"></ul>
         </div>
         <div class="game-over" style="display: none;">
-            <h2><?php _e('Game Over', 'photo-game'); ?></h2>
+            <h2><?php esc_html_e('Game Over', 'photo-game'); ?></h2>
             <p id="game-over-message"></p>
-            <p><?php _e('Share your photos on Instagram tagging @inthestreetsco and using the hashtag #inthestreets', 'photo-game'); ?></p>
-            <button id="reset-game" class="button button-primary"><?php _e('Play Again', 'photo-game'); ?></button>
+            <p><?php esc_html_e('Share your photos on Instagram tagging @inthestreetsco and using the hashtag #inthestreets', 'photo-game'); ?></p>
+            <button id="reset-game" class="button button-primary"><?php esc_html_e('Play Again', 'photo-game'); ?></button>
         </div>
-        <a id="reset-game-link" href="#"><?php _e('Reset Game', 'photo-game'); ?></a>
+        <a id="reset-game-link" href="#"><?php esc_html_e('Reset Game', 'photo-game'); ?></a>
     </div>
     <?php
-    $output = ob_get_clean();
-    return $output;
+    return ob_get_clean();
 }
 
 // Register the shortcode

@@ -18,6 +18,7 @@ define('PHOTO_GAME_PLUGIN_URL', plugin_dir_url(__FILE__));
 // Include necessary files
 include_once PHOTO_GAME_PLUGIN_DIR . 'includes/admin.php';
 include_once PHOTO_GAME_PLUGIN_DIR . 'includes/frontend.php';
+include_once PHOTO_GAME_PLUGIN_DIR . 'includes/functions.php'; // Include the functions file
 
 // Initialize the plugin
 function photo_game_init() {
@@ -50,11 +51,8 @@ function photo_game_enqueue_scripts() {
 }
 add_action('wp_enqueue_scripts', 'photo_game_enqueue_scripts');
 
-function get_topics_from_database($difficulty) {
-    global $wpdb;
-    $table_name = $wpdb->prefix . 'photo_game_topics';
-    $query = $wpdb->prepare("SELECT topic FROM $table_name WHERE difficulty = %s", $difficulty);
-    $results = $wpdb->get_col($query);
-    unset($query);
-    return $results;
-}
+// Increase memory limit if necessary
+ini_set('memory_limit', '256M');
+
+// Log memory usage for debugging
+error_log('Memory usage: ' . memory_get_usage());

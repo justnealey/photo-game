@@ -78,17 +78,9 @@ function photo_game_shortcode() {
     </div>
     <?php
     $output = ob_get_clean();
+    unset($output); // Clear memory
     return $output;
 }
 
-// Clear memory by unsetting large variables after use
+// Register the shortcode
 add_shortcode('photo_game', 'photo_game_shortcode');
-
-function get_topics_from_database($difficulty) {
-    global $wpdb;
-    $table_name = $wpdb->prefix . 'photo_game_topics';
-    $query = $wpdb->prepare("SELECT topic FROM $table_name WHERE difficulty = %s", $difficulty);
-    $results = $wpdb->get_col($query);
-    unset($query);
-    return $results;
-}

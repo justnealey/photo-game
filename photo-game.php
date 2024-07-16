@@ -49,3 +49,12 @@ function photo_game_enqueue_scripts() {
     ));
 }
 add_action('wp_enqueue_scripts', 'photo_game_enqueue_scripts');
+
+function get_topics_from_database($difficulty) {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'photo_game_topics';
+    $query = $wpdb->prepare("SELECT topic FROM $table_name WHERE difficulty = %s", $difficulty);
+    $results = $wpdb->get_col($query);
+    unset($query);
+    return $results;
+}

@@ -1,4 +1,3 @@
-<?php
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
@@ -78,5 +77,18 @@ function photo_game_shortcode() {
         <a id="reset-game-link" href="#"><?php _e('Reset Game', 'photo-game'); ?></a>
     </div>
     <?php
-    return ob_get_clean();
+    $output = ob_get_clean();
+    return $output;
+}
+
+// Clear memory by unsetting large variables after use
+add_shortcode('photo_game', 'photo_game_shortcode');
+
+function get_topics_from_database($difficulty) {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'photo_game_topics';
+    $query = $wpdb->prepare("SELECT topic FROM $table_name WHERE difficulty = %s", $difficulty);
+    $results = $wpdb->get_col($query);
+    unset($query);
+    return $results;
 }

@@ -78,7 +78,6 @@ function photo_game_shortcode() {
     </div>
     <?php
     $output = ob_get_clean();
-    unset($output); // Clear memory
     return $output;
 }
 
